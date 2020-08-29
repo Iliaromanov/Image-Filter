@@ -8,10 +8,12 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         for (int col = 0; col < width; col++)
         {
             RGBTRIPLE *pixel = &image[row][col];
-            
+            // calculating the average of the red, green, and blue values of the pixel
             int avg = (pixel->rgbtBlue + pixel->rgbtGreen + pixel->rgbtRed) / 3;
-            
-            
+            // changing the rgb values to the avg value to mak ethe pixel a shade of gray
+            pixel->rgbtBlue = avg;
+            pixel->rgbtGreen = avg;
+            pixel->rgbtRed = avg;
         }
     }
     return;
