@@ -1,6 +1,7 @@
 
 # Image Filtering
-What does it even mean to filter an image? You can think of filtering an image as taking the pixels of some original image, and modifying each pixel in such a way that a particular effect is apparent in the resulting image.
+Filtering an image is taking the pixels of some original image, and modifying each pixel in such a way that a particular effect is apparent in the resulting image.
+This program provides the user with four options of filters that may be applied to their '.bmp' images. Ther filters are described in detail below.
 
 **Grayscale**
 
