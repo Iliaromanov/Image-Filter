@@ -1,7 +1,7 @@
 
 # Image Filtering
 Filtering an image is taking the pixels of some original image, and modifying each pixel in such a way that a particular effect is apparent in the resulting image.
-This program provides the user with four options of filters that may be applied to their '.bmp' images. Ther filters are described in detail below.
+This program provides the user with four options of filters that may be applied to their '.bmp' images. The filters are described in detail below.
 
 **Grayscale**
 
