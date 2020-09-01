@@ -67,9 +67,107 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         }
     }
 }
-
+void setRgb(int x, int y, int arr1[], int arr2[], int arr3[], RGBTRIPLE arr4[x][y], int i)
+{
+    arr1[i] = arr4[x][y].rgbtRed;
+    arr2[i] = arr4[x][y].rgbtBlue;
+    arr3[i] = arr4[x][y].rgbtGreen;
+}
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    return;
+    int sumRed;
+    int sumBlue;
+    int sumGreen;
+    float total;
+    
+    RGBTRIPLE copy[width][height];
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            copy[i][j] = image[i][j];
+        }
+    }
+    
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            sumRed = 0;
+            sumBlue = 0;
+            sumGreen = 0;
+            total = 0.0;
+            
+            sumRed += copy[i][j].rgbtRed;
+            sumBlue += copy[i][j].rgbtBlue;
+            sumGreen += copy[i][j].rgbtGreen;
+            total += 1.0;
+            
+            if (i > 0)
+            {
+                if (j > 0)
+                {
+                    sumRed += copy[i - 1][j - 1].rgbtRed;
+                    sumBlue += copy[i - 1][j - 1].rgbtBlue;
+                    sumGreen += copy[i - 1][j - 1].rgbtGreen;
+                    total += 1.0;
+                }
+                
+                sumRed += copy[i - 1][j].rgbtRed;
+                sumBlue += copy[i - 1][j].rgbtBlue;
+                sumGreen += copy[i - 1][j].rgbtGreen;
+                total += 1.0;
+                
+                if (j < width - 1)
+                {
+                    sumRed += copy[i - 1][j + 1].rgbtRed;
+                    sumBlue += copy[i - 1][j + 1].rgbtBlue;
+                    sumGreen += copy[i - 1][j + 1].rgbtGreen;
+                    total += 1.0;
+                }
+            }
+            if (j > 0)
+            {
+                sumRed += copy[i][j - 1].rgbtRed;
+                sumBlue += copy[i][j - 1].rgbtBlue;
+                sumGreen += copy[i][j - 1].rgbtGreen;
+                total += 1.0;
+            }
+            if (j < width - 1)
+            {
+                sumRed += copy[i][j + 1].rgbtRed;
+                sumBlue += copy[i][j + 1].rgbtBlue;
+                sumGreen += copy[i][j + 1].rgbtGreen;
+                total += 1.0;
+            }
+            if (i < height - 1)
+            {
+                if (j > 0)
+                {
+                    sumRed += copy[i + 1][j - 1].rgbtRed;
+                    sumBlue += copy[i + 1][j - 1].rgbtBlue;
+                    sumGreen += copy[i + 1][j - 1].rgbtGreen;
+                    total += 1.0;
+                }
+                
+                sumRed += copy[i + 1][j].rgbtRed;
+                sumBlue += copy[i + 1][j].rgbtBlue;
+                sumGreen += copy[i + 1][j].rgbtGreen;
+                total += 1.0;
+                
+                if (j < width - 1)
+                {
+                    sumRed += copy[i + 1][j + 1].rgbtRed;
+                    sumBlue += copy[i + 1][j + 1].rgbtBlue;
+                    sumGreen += copy[i + 1][j + 1].rgbtGreen;
+                    total += 1.0;
+                }
+            }
+
+            image[i][j].rgbtRed = round((float)sumRed / total);
+            image[i][j].rgbtBlue = round((float)sumBlue / total);
+            image[i][j].rgbtGreen = round((float)sumGreen / total);
+        }
+    }
 }
