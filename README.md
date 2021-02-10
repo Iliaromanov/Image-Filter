@@ -3,6 +3,12 @@
 Filtering an image is taking the pixels of some original image, and modifying each pixel in such a way that a particular effect is apparent in the resulting image.
 This program provides the user with four options of filters that may be applied to their '.bmp' images. The filters are described in detail below.
 
+## Usage
+<!--$ ./filter -g infile.bmp outfile.bmp
+$ ./filter -r infile.bmp outfile.bmp
+$ ./filter -b infile.bmp outfile.bmp
+$ ./filter -e infile.bmp outfile.bmp-->
+
 **Grayscale**
 
 One common filter is the “grayscale” filter, where we take an image and want to convert it to black-and-white. How does that work?
